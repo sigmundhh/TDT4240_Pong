@@ -34,7 +34,6 @@ public class PlayState extends State {
         sprites.add(player2Paddle);
         ball = new Ball(550, 150);
         sprites.add(ball);
-        System.out.println(ball.getTexture().getHeight());
         setRandomSpeedToBall();
 
         backGround = new Texture("Gray.png");
@@ -90,6 +89,10 @@ public class PlayState extends State {
         //S-button
         if(Gdx.input.isKeyPressed(Input.Keys.S)) {
             player2Paddle.moveDown(dt);
+        }
+        //Escape to pause
+        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+            gsm.push(new PauseState(gsm));
         }
     }
 
@@ -180,6 +183,8 @@ public class PlayState extends State {
         font.draw(sb, "Player 1 points: " + player1Points + "       Player 2 points: " + player2Points +
                         "        " + winnerString,
                 0, 15);
+        font.draw(sb, "Press ESC to pause",
+                MyGdxGame.WIDTH-130, 15);
         sb.end();
     }
 }

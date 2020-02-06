@@ -17,11 +17,11 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	private SpriteBatch batch;
 	Texture img;
-	
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		gsm = new GameStateManager();
+		gsm = GameStateManager.getInstance();
 		gsm.push(new PlayState(gsm));
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 	}
